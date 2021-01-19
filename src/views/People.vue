@@ -1,11 +1,14 @@
 <template>
   <div class="people">
-    <PageBanner title="PEOPLE" />
+    <PageBanner
+      title="PEOPLE"
+      image="https://images.unsplash.com/photo-1579566346927-c68383817a25?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    />
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap -m-4 mb-4">
           <div
-            class="p-4 lg:w-1/3"
+            class="p-4 w-full lg:w-1/3"
             v-for="(character, index) in data.people.results"
             :key="index"
           >
@@ -30,7 +33,7 @@
                 </h1>
 
                 <a class="text-indigo-500 inline-flex items-center"
-                  >Learn More
+                  >View Details
                   <svg
                     class="w-4 h-4 ml-2"
                     viewBox="0 0 24 24"
