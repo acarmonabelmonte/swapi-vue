@@ -2,20 +2,18 @@
   <div class="py-24 px-6 bg-gray-100">
     <div class="max-w-6xl mx-auto mb-12">
       <h2
-        class="mx-auto text-center text-2xl md:text-5xl max-w-3xl leading-tight text-gray-800 mb-12"
+        class="mx-auto text-center text-2xl md:text-5xl max-w-3xl leading-tight text-gray-800 mb-8"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Available sections:
       </h2>
 
       <p
         class="mb-6 text-gray-600 mx-auto max-w-lg text-center leading-relaxed"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et eros
-        libero. Nunc auctor nisi imperdiet fringilla blandit. Vivamus pharetra
-        pulvinar purus. Donec ligula dui, pellentesque eget lacus et, viverra
-        placerat enim. Maecenas porttitor massa id nulla commodo, venenatis
-        suscipit est vestibulum. Quisque quis felis bibendum, placerat velit et,
-        tincidunt felis. Suspendisse a hendrerit metus.
+        Learn details about all the characters in the famous movie saga created
+        by George Lucas, find out all about the planets that make up this
+        wonderful universe and discover all about the incredible starships that
+        appear in these incredible stories.
       </p>
     </div>
     <div class="max-w-5xl mx-auto flex flex-wrap items-start">

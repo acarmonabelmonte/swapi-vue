@@ -13,8 +13,10 @@
       >
         <div>
           <h1 class="text-3xl md:text-6xl leading-tight mb-16">
-            Lorem ipsum dolor sit amet,
-            <br class="hidden md:block" />consectetur adipiscing elit.
+            Welcome to SWAPI VUE,
+            <br class="hidden md:block" />a Vue App that shows
+            <br class="hidden md:block" />
+            data from a Star Wars API.
           </h1>
           <a
             href="#sections"

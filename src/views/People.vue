@@ -21,18 +21,13 @@
               <div
                 class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative"
               >
-                <h2
-                  class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
-                >
-                  PEOPLE
-                </h2>
                 <h1
                   class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3"
                 >
                   {{ character.name }}
                 </h1>
 
-                <a class="text-indigo-500 inline-flex items-center"
+                <a class="text-indigo-600 inline-flex items-center"
                   >View Details
                   <svg
                     class="w-4 h-4 ml-2"
