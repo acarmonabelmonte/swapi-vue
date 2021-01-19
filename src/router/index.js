@@ -4,29 +4,46 @@ import Home from '../views/Home.vue'
 import People from '../views/People.vue'
 import Planets from '../views/Planets.vue'
 import Starships from '../views/Starships.vue'
+import PeopleDetails from '../views/PeopleDetails.vue'
+import PlanetsDetails from '../views/PlanetsDetails.vue'
+import StarshipsDetails from '../views/StarshipsDetails.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home
   },
-   {
+  {
     path: '/people',
     name: 'People',
     component: People
   },
-    {
+  {
     path: '/planets',
-    name: 'planets',
+    name: 'Planets',
     component: Planets
   },
-     {
+  {
     path: '/starships',
-    name: 'starships',
+    name: 'Starships',
     component: Starships
+  },
+  {
+    path: '/people/:id',
+    name: 'PeopleDetails',
+    component: PeopleDetails
+  },
+  {
+    path: '/planets/:id',
+    name: 'PlanetsDetails',
+    component: PlanetsDetails
+  },
+  {
+    path: '/starships/:id',
+    name: 'StarshipsDetails',
+    component: StarshipsDetails
   },
 ]
 

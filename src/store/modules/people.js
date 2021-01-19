@@ -5,23 +5,31 @@ const uri = `${process.env.VUE_APP_API_URL}people/`;
 
 
 const state = {
-    people: []
+    people: [],
+    peopleDetails: []
 };
 
 const getters = {
-    allPeople: state => state.people
+    allPeople: state => state.people,
+    peopleDetailed: state => state.peopleDetails
 };
 
 const actions = {
     async fetchPeople({ commit }) {
         const response = await axios.get(uri);    
         commit('setPeople', response.data);
-        console.log(response.data.results)
+        console.log(response.data)
+    },
+    async fetchPeopleDetails({ commit }, id) {
+        const response = await axios.get(`${uri}${id}`);    
+        commit('setPeopleDetails', response.data);
+        console.log(response.data)
     },
 };
 
 const mutations = {
     setPeople: (state, people) => state.people = people,
+    setPeopleDetails: (state, peopleDetails) => state.peopleDetails = peopleDetails
 };
 
 export default {
