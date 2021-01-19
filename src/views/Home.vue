@@ -2,7 +2,7 @@
   <div class="home">
     <div class="w-full h-screen relative text-primary-100">
       <img
-        src="../assets/images/clone-4773016.jpg"
+        src="../assets/images/spac-bg.png"
         class="absolute top-0 left-0 w-full h-full object-cover"
       />
 
@@ -13,28 +13,30 @@
       >
         <div>
           <h1 class="text-3xl md:text-6xl leading-tight mb-16">
-            Duis aute irure dolor, <br class="hidden md:block" />reprehenderit
-            in voluptate.
+            Lorem ipsum dolor sit amet,
+            <br class="hidden md:block" />consectetur adipiscing elit.
           </h1>
           <a
-            href="#"
-            class="border border-white py-4 px-8 hover:bg-white hover:text-black"
+            href="#sections"
+            class="border border-primary-100 py-4 px-8 hover:bg-primary-100 hover:text-black"
             >Get started</a
           >
         </div>
       </div>
     </div>
+    <Sections id="sections" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import NavBar from "@/components/UI/NavBar.vue";
+import Sections from "@/components/Home/Sections.vue";
 
 export default {
   name: "Home",
   components: {
     NavBar,
+    Sections,
   },
 };
 </script>
