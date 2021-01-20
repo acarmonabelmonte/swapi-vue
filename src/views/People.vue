@@ -76,14 +76,15 @@
             </router-link>
           </div>
         </div>
-        <Pagination
-          :total-pages="totalPages"
-          :per-page="perPage"
-          :current-page="currentPage"
-          :has-more-pages="hasMorePages"
-          @pagechanged="showMore"
-        >
-        </Pagination>
+        <div class="max-w-lg mx-auto my-12">
+          <Pagination
+            :total-pages="totalPages"
+            :per-page="10"
+            :current-page="currentPage"
+            @pagechanged="onPageChange"
+            :has-more-pages="hasNextPage"
+          />
+        </div>
         <GoBackLink />
       </div>
     </section>
@@ -100,10 +101,7 @@ export default {
   data() {
     return {
       search: "",
-      page: 1,
-      perPage: 10,
       currentPage: 1,
-      hasMorePages: true,
     };
   },
   components: {
@@ -122,6 +120,9 @@ export default {
     totalPages() {
       return Math.ceil(this.data.people.count / 10);
     },
+    hasNextPage() {
+      return this.data.people.next != null ? true : false;
+    },
   },
   methods: {
     formatId(url) {
@@ -131,12 +132,21 @@ export default {
         .replace("/", "");
     },
     searchByName() {
-      this.$store.dispatch("searchPeople", this.search);
+      let payload = {
+        search: this.search,
+        page: 1,
+      };
+      this.$store.dispatch("searchPeople", payload);
     },
-    showMore(page) {
-      this.page = page;
+    onPageChange(page) {
       this.currentPage = page;
-      this.$store.dispatch("fetchPeople", this.currentPage);
+      let payload = {
+        search: this.search,
+        page: this.currentPage,
+      };
+      this.search === ""
+        ? this.$store.dispatch("fetchPeople", this.currentPage)
+        : this.$store.dispatch("searchPeople", payload);
     },
   },
 };

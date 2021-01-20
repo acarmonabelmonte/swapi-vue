@@ -20,10 +20,10 @@ const actions = {
         commit('setPeople', response.data);
         console.log(response.data)
     },
-    async searchPeople({ commit }, search) {
-        const response = await axios.get(`${uri}?search=${search}`);    
+    async searchPeople({ commit }, payload) {
+        const response = await axios.get(`${uri}?search=${payload.search}&page=${payload.page}`);    
         commit('setPeople', response.data);
-        console.log(response.data)
+        console.log(payload)
     },
     async fetchPeopleDetails({ commit }, id) {
         const response = await axios.get(`${uri}${id}`);    
