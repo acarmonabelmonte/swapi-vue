@@ -15,8 +15,8 @@ const getters = {
 };
 
 const actions = {
-    async fetchPeople({ commit }) {
-        const response = await axios.get(uri);    
+    async fetchPeople({ commit }, page = 1) {
+        const response = await axios.get(`${uri}?page=${page}`);    
         commit('setPeople', response.data);
         console.log(response.data)
     },

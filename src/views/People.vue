@@ -76,6 +76,14 @@
             </router-link>
           </div>
         </div>
+        <Pagination
+          :total-pages="totalPages"
+          :per-page="perPage"
+          :current-page="currentPage"
+          :has-more-pages="hasMorePages"
+          @pagechanged="showMore"
+        >
+        </Pagination>
         <GoBackLink />
       </div>
     </section>
@@ -86,24 +94,35 @@
 import { mapState } from "vuex";
 import GoBackLink from "@/components/UI/GoBackLink.vue";
 import PageBanner from "@/components/UI/PageBanner.vue";
+import Pagination from "@/components/UI/Pagination.vue";
 export default {
   name: "People",
   data() {
     return {
       search: "",
+      page: 1,
+      perPage: 10,
+      currentPage: 1,
+      hasMorePages: true,
     };
   },
   components: {
     GoBackLink,
     PageBanner,
+    Pagination,
   },
   mounted() {
     this.$store.dispatch("fetchPeople");
   },
-  computed: mapState({
-    people: (state) => state.people,
-    data: "people",
-  }),
+  computed: {
+    ...mapState({
+      people: (state) => state.people,
+      data: "people",
+    }),
+    totalPages() {
+      return Math.ceil(this.data.people.count / 10);
+    },
+  },
   methods: {
     formatId(url) {
       return url
@@ -113,6 +132,11 @@ export default {
     },
     searchByName() {
       this.$store.dispatch("searchPeople", this.search);
+    },
+    showMore(page) {
+      this.page = page;
+      this.currentPage = page;
+      this.$store.dispatch("fetchPeople", this.currentPage);
     },
   },
 };
