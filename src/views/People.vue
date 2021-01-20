@@ -11,7 +11,7 @@
           class="mb-6 w-full lg:w-3/12 h-10 pl-3 pr-2 bg-white border rounded-full flex justify-between items-center relative"
         >
           <input
-            @keyup.enter="searchByName"
+            @keyup.enter="searchByName(search)"
             type="search"
             name="search"
             id="search"
@@ -20,7 +20,7 @@
             class="appearance-none w-full outline-none focus:outline-none active:outline-none"
           />
           <button
-            @click="searchByName"
+            @click="searchByName(search)"
             class="ml-1 outline-none focus:outline-none active:outline-none"
           >
             <svg
@@ -36,46 +36,7 @@
             </svg>
           </button>
         </div>
-        <div class="flex flex-wrap -m-4 mb-4">
-          <div
-            class="p-4 w-full lg:w-1/3"
-            v-for="(character, index) in data.people.results"
-            :key="index"
-          >
-            <router-link
-              :to="{
-                name: 'PeopleDetails',
-                params: { id: formatId(character.url) },
-              }"
-            >
-              <div
-                class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative"
-              >
-                <h1
-                  class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3"
-                >
-                  {{ character.name }}
-                </h1>
-
-                <a class="text-indigo-600 inline-flex items-center"
-                  >View Details
-                  <svg
-                    class="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </router-link>
-          </div>
-        </div>
+        <ItemsList :items-list="data.people.results" />
         <div class="max-w-lg mx-auto my-12">
           <Pagination
             :total-pages="totalPages"
@@ -93,6 +54,7 @@
 
 <script>
 import { mapState } from "vuex";
+import ItemsList from "@/components/Common/ItemsList.vue";
 import GoBackLink from "@/components/UI/GoBackLink.vue";
 import PageBanner from "@/components/UI/PageBanner.vue";
 import Pagination from "@/components/UI/Pagination.vue";
@@ -105,6 +67,7 @@ export default {
     };
   },
   components: {
+    ItemsList,
     GoBackLink,
     PageBanner,
     Pagination,
@@ -125,28 +88,19 @@ export default {
     },
   },
   methods: {
-    formatId(url) {
-      return url
-        .substring(url.lastIndexOf("people"))
-        .replace("people/", "")
-        .replace("/", "");
-    },
-    searchByName() {
+    searchByName(name, page = 1) {
       let payload = {
-        search: this.search,
-        page: 1,
+        search: name,
+        page,
       };
       this.$store.dispatch("searchPeople", payload);
+      this.currentPage = page;
     },
     onPageChange(page) {
       this.currentPage = page;
-      let payload = {
-        search: this.search,
-        page: this.currentPage,
-      };
       this.search === ""
         ? this.$store.dispatch("fetchPeople", this.currentPage)
-        : this.$store.dispatch("searchPeople", payload);
+        : this.searchByName(this.search, this.currentPage);
     },
   },
 };

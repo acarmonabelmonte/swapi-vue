@@ -15,20 +15,23 @@ const getters = {
 };
 
 const actions = {
-    async fetchPeople({ commit }, page = 1) {
-        const response = await axios.get(`${uri}?page=${page}`);    
+    async fetchPeople({
+        commit
+    }, page = 1) {
+        const response = await axios.get(`${uri}?page=${page}`);
         commit('setPeople', response.data);
-        console.log(response.data)
     },
-    async searchPeople({ commit }, payload) {
-        const response = await axios.get(`${uri}?search=${payload.search}&page=${payload.page}`);    
+    async searchPeople({
+        commit
+    }, payload) {
+        const response = await axios.get(`${uri}?search=${payload.search}&page=${payload.page}`);
         commit('setPeople', response.data);
-        console.log(payload)
     },
-    async fetchPeopleDetails({ commit }, id) {
-        const response = await axios.get(`${uri}${id}`);    
+    async fetchPeopleDetails({
+        commit
+    }, id) {
+        const response = await axios.get(`${uri}${id}`);
         commit('setPeopleDetails', response.data);
-        console.log(response.data)
     },
 };
 
@@ -38,5 +41,8 @@ const mutations = {
 };
 
 export default {
-    state, getters, actions, mutations
+    state,
+    getters,
+    actions,
+    mutations
 }

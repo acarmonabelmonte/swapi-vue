@@ -4,25 +4,44 @@ import axios from 'axios';
 const uri = `${process.env.VUE_APP_API_URL}starships/`;
 
 const state = {
-    starships: []
+    starships: [],
+    starshipDetails: []
 };
 
 const getters = {
-    allStarships: state => state.starships
+    allStarships: state => state.starships,
+    starshipDetailed: state => state.starshipDetails
 };
 
 const actions = {
-    async fetchStarships({ commit }) {
-        const response = await axios.get(uri);    
+    async fetchStarships({
+        commit
+    }, page = 1) {
+        const response = await axios.get(`${uri}?page=${page}`);
         commit('setStarships', response.data);
-        console.log(response.data.results)
+    },
+    async searchStarship({
+        commit
+    }, payload) {
+        const response = await axios.get(`${uri}?search=${payload.search}&page=${payload.page}`);
+        commit('setStarships', response.data);
+    },
+    async fetchPeopleDetails({
+        commit
+    }, id) {
+        const response = await axios.get(`${uri}${id}`);
+        commit('setStarshipDetails', response.data);
     },
 };
 
 const mutations = {
     setStarships: (state, starships) => state.starships = starships,
+    setStarshipDetails: (state, starshipDetails) => state.starshipDetails = starshipDetails
 };
 
 export default {
-    state, getters, actions, mutations
+    state,
+    getters,
+    actions,
+    mutations
 }
