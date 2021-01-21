@@ -36,9 +36,10 @@
             </svg>
           </button>
         </div>
-        <ItemsList :items-list="data.planets.results" />
+        <ItemsList :items-list="data.planets.results" :category="'planets'" />
         <div class="max-w-lg mx-auto my-12">
           <Pagination
+            v-if="data.starships.count > 0"
             :total-pages="totalPages"
             :per-page="10"
             :current-page="currentPage"

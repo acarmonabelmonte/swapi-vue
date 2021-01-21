@@ -7,7 +7,7 @@
     >
       <router-link
         :to="{
-          name: 'PeopleDetails',
+          name: detailedPage,
           params: { id: formatId(item.url) },
         }"
       >
@@ -43,13 +43,31 @@
 
 <script>
 export default {
-  props: ["itemsList"],
+  props: {
+    itemsList: {
+      type: Array,
+    },
+    category: {
+      type: String,
+    },
+  },
   methods: {
     formatId(url) {
       return url
-        .substring(url.lastIndexOf("people"))
-        .replace("people/", "")
+        .substring(url.lastIndexOf(this.category))
+        .replace(`${this.category}/`, "")
         .replace("/", "");
+    },
+  },
+  computed: {
+    detailedPage() {
+      if (this.category === "people") {
+        return "PeopleDetails";
+      } else if (this.category === "planets") {
+        return "PlanetsDetails";
+      } else {
+        return "StarshipsDetails";
+      }
     },
   },
 };

@@ -26,7 +26,7 @@ const actions = {
         const response = await axios.get(`${uri}?search=${payload.search}&page=${payload.page}`);
         commit('setStarships', response.data);
     },
-    async fetchPeopleDetails({
+    async fetchStarshipDetails({
         commit
     }, id) {
         const response = await axios.get(`${uri}${id}`);

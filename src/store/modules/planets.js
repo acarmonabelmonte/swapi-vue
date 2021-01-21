@@ -30,7 +30,7 @@ const actions = {
 
 const mutations = {
     setPlanets: (state, planets) => state.planets = planets,
-    setPeopleDetails: (state, peopleDetails) => state.peopleDetails = peopleDetails
+    setPlanetDetails: (state, planetDetails) => state.planetDetails = planetDetails
 };
 
 export default {

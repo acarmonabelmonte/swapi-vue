@@ -1,7 +1,7 @@
 <template>
   <div class="starships">
     <PageBanner
-      title="STARSHIPS"
+      :title="'STARSHIPS'"
       image="https://images.unsplash.com/photo-1587279484796-61a264afc18b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
     />
 
@@ -36,9 +36,13 @@
             </svg>
           </button>
         </div>
-        <ItemsList :items-list="data.starships.results" />
+        <ItemsList
+          :items-list="data.starships.results"
+          :category="'starships'"
+        />
         <div class="max-w-lg mx-auto my-12">
           <Pagination
+            v-if="data.starships.count > 0"
             :total-pages="totalPages"
             :per-page="10"
             :current-page="currentPage"
