@@ -31,7 +31,7 @@ export default {
   },
   components: { GoBackLink, PageBanner },
   mounted() {
-    this.$store.dispatch("fetchStarshipDetails", this.starshipId);
+    this.$store.dispatch("starships/fetchStarshipDetails", this.starshipId);
   },
   computed: mapState({
     starshipDetails: (state) => state.starships.starshipDetails,

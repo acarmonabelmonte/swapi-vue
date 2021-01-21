@@ -31,7 +31,7 @@ export default {
   },
   components: { GoBackLink, PageBanner },
   mounted() {
-    this.$store.dispatch("fetchPeopleDetails", this.peopleId);
+    this.$store.dispatch("people/fetchPeopleDetails", this.peopleId);
   },
   computed: mapState({
     peopleDetails: (state) => state.people.peopleDetails,

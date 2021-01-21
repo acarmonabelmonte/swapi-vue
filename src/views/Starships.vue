@@ -80,7 +80,7 @@ export default {
     NoFoundData,
   },
   mounted() {
-    this.$store.dispatch("fetchStarships");
+    this.$store.dispatch("starships/fetchStarships");
   },
   computed: {
     ...mapState({
@@ -100,13 +100,13 @@ export default {
         search: name,
         page,
       };
-      this.$store.dispatch("searchStarship", payload);
+      this.$store.dispatch("starships/searchStarship", payload);
       this.currentPage = page;
     },
     onPageChange(page) {
       this.currentPage = page;
       this.search === ""
-        ? this.$store.dispatch("fetchStarships", this.currentPage)
+        ? this.$store.dispatch("starships/fetchStarships", this.currentPage)
         : this.searchByName(this.search, this.currentPage);
     },
   },

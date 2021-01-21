@@ -76,7 +76,7 @@ export default {
     NoFoundData,
   },
   mounted() {
-    this.$store.dispatch("fetchPeople");
+    this.$store.dispatch("people/fetchPeople");
   },
   computed: {
     ...mapState({
@@ -96,13 +96,13 @@ export default {
         search: name,
         page,
       };
-      this.$store.dispatch("searchPeople", payload);
+      this.$store.dispatch("people/searchPeople", payload);
       this.currentPage = page;
     },
     onPageChange(page) {
       this.currentPage = page;
       this.search === ""
-        ? this.$store.dispatch("fetchPeople", this.currentPage)
+        ? this.$store.dispatch("people/fetchPeople", this.currentPage)
         : this.searchByName(this.search, this.currentPage);
     },
   },

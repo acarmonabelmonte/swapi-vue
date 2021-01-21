@@ -77,7 +77,7 @@ export default {
     NoFoundData,
   },
   mounted() {
-    this.$store.dispatch("fetchPlanets");
+    this.$store.dispatch("planets/fetchPlanets");
   },
   computed: {
     ...mapState({
@@ -97,13 +97,13 @@ export default {
         search: name,
         page,
       };
-      this.$store.dispatch("searchPlanet", payload);
+      this.$store.dispatch("planets/searchPlanet", payload);
       this.currentPage = page;
     },
     onPageChange(page) {
       this.currentPage = page;
       this.search === ""
-        ? this.$store.dispatch("fetchPlanets", this.currentPage)
+        ? this.$store.dispatch("planets/fetchPlanets", this.currentPage)
         : this.searchByName(this.search, this.currentPage);
     },
   },

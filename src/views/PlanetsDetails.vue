@@ -31,7 +31,7 @@ export default {
   },
   components: { GoBackLink, PageBanner },
   mounted() {
-    this.$store.dispatch("fetchPlanetDetails", this.planetId);
+    this.$store.dispatch("planets/fetchPlanetDetails", this.planetId);
   },
   computed: mapState({
     planetDetails: (state) => state.planets.planetDetails,
