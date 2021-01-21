@@ -1,9 +1,9 @@
 <template>
-  <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+  <ring-loader :loading="loading" :color="color" :size="size"></ring-loader>
 </template>
 
 <script>
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import RingLoader from "vue-spinner/src/RingLoader.vue";
 export default {
   props: {
     loading: {
@@ -17,7 +17,7 @@ export default {
     },
   },
   components: {
-    PulseLoader,
+    RingLoader,
   },
 };
 </script>

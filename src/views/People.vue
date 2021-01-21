@@ -4,7 +4,6 @@
       title="PEOPLE"
       image="https://images.unsplash.com/photo-1579566346927-c68383817a25?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
     />
-    <Vue-Spinner :loading="loading" :color="color" :size="size"></Vue-Spinner>
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-20 mx-auto">
         <div
@@ -61,16 +60,12 @@ import GoBackLink from "@/components/UI/GoBackLink.vue";
 import PageBanner from "@/components/UI/PageBanner.vue";
 import Pagination from "@/components/UI/Pagination.vue";
 import NoFoundData from "@/components/Common/NoFoundData.vue";
-import VueSpinner from "@/components/UI/VueSpinner.vue";
 export default {
   name: "People",
   data() {
     return {
       search: "",
       currentPage: 1,
-      loading: true,
-      color: "#2c3e50",
-      size: "10px",
     };
   },
   components: {
@@ -79,7 +74,6 @@ export default {
     PageBanner,
     Pagination,
     NoFoundData,
-    VueSpinner,
   },
   mounted() {
     this.$store.dispatch("fetchPeople");
