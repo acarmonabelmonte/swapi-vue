@@ -40,6 +40,7 @@
           :items-list="data.starships.results"
           :category="'starships'"
         />
+        <NoFoundData v-if="data.starships.count === 0" />
         <div class="max-w-lg mx-auto my-12">
           <Pagination
             v-if="data.starships.count > 0"
@@ -62,6 +63,7 @@ import ItemsList from "@/components/Common/ItemsList.vue";
 import GoBackLink from "@/components/UI/GoBackLink.vue";
 import PageBanner from "@/components/UI/PageBanner.vue";
 import Pagination from "@/components/UI/Pagination.vue";
+import NoFoundData from "@/components/Common/NoFoundData.vue";
 export default {
   name: "Starships",
   data() {
@@ -75,6 +77,7 @@ export default {
     GoBackLink,
     PageBanner,
     Pagination,
+    NoFoundData,
   },
   mounted() {
     this.$store.dispatch("fetchStarships");

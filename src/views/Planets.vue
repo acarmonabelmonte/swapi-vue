@@ -37,9 +37,10 @@
           </button>
         </div>
         <ItemsList :items-list="data.planets.results" :category="'planets'" />
+        <NoFoundData v-if="data.planets.count === 0" />
         <div class="max-w-lg mx-auto my-12">
           <Pagination
-            v-if="data.starships.count > 0"
+            v-if="data.planets.count > 0"
             :total-pages="totalPages"
             :per-page="10"
             :current-page="currentPage"
@@ -59,6 +60,7 @@ import ItemsList from "@/components/Common/ItemsList.vue";
 import GoBackLink from "@/components/UI/GoBackLink.vue";
 import PageBanner from "@/components/UI/PageBanner.vue";
 import Pagination from "@/components/UI/Pagination.vue";
+import NoFoundData from "@/components/Common/NoFoundData.vue";
 export default {
   name: "Planets",
   data() {
@@ -72,6 +74,7 @@ export default {
     GoBackLink,
     PageBanner,
     Pagination,
+    NoFoundData,
   },
   mounted() {
     this.$store.dispatch("fetchPlanets");
